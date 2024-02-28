@@ -1,28 +1,39 @@
 import random
 
 def acertou():
-    print('acertou')
+    print('Parabéns! você acertou')
 def jogo():
 
-
-    num_sec = random.randint(1,10)
-    maxtry = 5
+    tentas = 0
+    num_sec = random.randint(1,100)
+    maxtry = 10
     try_ = 0
-    tentas = maxtry - try_
     while try_ != maxtry:
+        tentas = (maxtry - try_)
+        print('Escolha um número de 1 a 100, você tem %.f chances ' %(tentas))
+        resp = int(input())
+        
+        if (num_sec - resp) >= 10:
+            print('é bem maior')
+            try_ += 1
 
-        resp = int(input('Escolha um número de 1 a 10 '))
-
-        if resp < num_sec:
+        elif resp < num_sec:
             print("é maior")
             try_ += 1
 
-        if resp > num_sec:
+        if (resp - num_sec) >= 10:
+            print('é bem menor')
+            try_ += 1
+
+        elif resp > num_sec:
             print('é menor')
             try_ += 1
 
+
+
+
         if resp == num_sec:
-            print('acertou')
+            acertou()
             break
     if try_ == maxtry:
         print("acabaram as tentativas")
